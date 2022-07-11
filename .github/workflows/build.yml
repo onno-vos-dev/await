@@ -1,0 +1,29 @@
+name: Makefile CI
+
+on:
+  push:
+    branches: [ "master", "replace-travis-ci-with-github-actions" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.18
+
+      - name: configure
+        run: ./configure
+
+      - name: Install dependencies
+        run: make deps
+
+      - name: Test
+        run: make test
