@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/fcristovao/await.svg?branch=master)](https://travis-ci.com/fcristovao/await)
+[![Build Status](https://travis-ci.com/onno-vos-dev/await.svg?branch=master)](https://travis-ci.com/onno-vos-dev/await)
 
 # await
 
@@ -24,11 +24,11 @@ This repository will only contain versions 1.2 and above due to that.
 
 ## Installation
 
-    go get -u github.com/fcristovao/await
+    go get -u github.com/onno-vos-dev/await
 
 or
 
-    curl -s -f -L -o await https://github.com/fcristovao/await/releases/download/v1.2.1/await-linux-amd64
+    curl -s -f -L -o await https://github.com/onno-vos-dev/await/releases/download/v1.2.1/await-linux-amd64
     chmod +x await
 
 
