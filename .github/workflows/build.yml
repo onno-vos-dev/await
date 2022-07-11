@@ -1,8 +1,8 @@
-name: Makefile CI
+name: Build & Test
 
 on:
   push:
-    branches: [ "master", "replace-travis-ci-with-github-actions" ]
+    branches: [ "*" ]
   pull_request:
     branches: [ "master" ]
 
@@ -21,6 +21,9 @@ jobs:
 
       - name: Install dependencies
         run: make build
+
+      - name: Check await binary
+        run: await -V || exit 1
 
       - name: Test
         run: make test
