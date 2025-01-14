@@ -1,9 +1,12 @@
 name: Make release
 
 on:
-  push:
-    tags:
-    - '*'
+  push: {}
+
+# on:
+#   push:
+#     tags:
+#     - '*'
 
 jobs:
   create_release:
@@ -40,13 +43,22 @@ jobs:
       - name: Make release
         run: PLATFORM=${{ matrix.platform-arch }} make rel
 
-      - name: Upload binary
-        id: upload-release-asset
+      - name: Upload amd64 binary
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.create_release.outputs.upload_url }}
-          asset_path: ./await-${{ matrix.platform-arch }}
-          asset_name: await-${{ matrix.platform-arch }}
+          asset_path: ./await-${{ matrix.platform-arch }}-amd64
+          asset_name: await-${{ matrix.platform-arch }}-amd64
+          asset_content_type: application/octet-stream
+
+      - name: Upload arm64 binary
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.create_release.outputs.upload_url }}
+          asset_path: ./await-${{ matrix.platform-arch }}-arm64
+          asset_name: await-${{ matrix.platform-arch }}-arm64
           asset_content_type: application/octet-stream
