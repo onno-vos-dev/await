@@ -42,5 +42,5 @@ test:
 
 .PHONY: rel
 rel:
-	go build -v -o await-${PLATFORM} .
-
+	GOARCH=amd64 go build -v -o await-${PLATFORM}-${GOARCH} .
+	GOARCH=arm64 go build -v -o await-${PLATFORM}-${GOARCH} .
